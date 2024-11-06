@@ -72,16 +72,8 @@ def deletePostView(request: HttpRequest, postid:int):
 #Filter by category
 def categoryFilterView(request: HttpRequest, category):
 
-    posts = Post.objects.filter(category=category)
+    posts =  Post.objects.filter(category=category) if category != "all" else Post.objects.all()
     response = render(request, 'post/allPosts.html', context={'posts': posts, 'categories': Post.Categories.choices, 'selected': category})
     return response
 
-#Display all posts page
-def allView(request: HttpRequest):
-    
-    categories = Post.Categories.choices
-    #Get the list of posts
-    posts = Post.objects.all().order_by("-publishedAt")[0:3]
-
-    return render(request, 'post/allPosts.html', context={'posts': posts, 'categories': categories})
 

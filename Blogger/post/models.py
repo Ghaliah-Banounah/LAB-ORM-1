@@ -15,4 +15,4 @@ class Post(models.Model):
     picture = models.ImageField(upload_to='images/', default='images/default.jpg')
     category = models.CharField(max_length=64, choices=Categories.choices)
     isPublished = models.BooleanField(default=True)
-    publishedAt = models.DateTimeField(auto_now=True )
+    publishedAt = models.DateTimeField(auto_now=True)
